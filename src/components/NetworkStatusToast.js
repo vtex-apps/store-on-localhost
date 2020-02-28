@@ -1,9 +1,11 @@
+import { path, pathOr } from 'ramda'
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { injectIntl } from 'react-intl'
-import { ToastContext } from './ToastProvider'
+import ToastContext from '../components/new/Styleguide/ToastContext'
+import { useRuntime } from '../vtex.render-runtime'
 
 function NetworkStatusToast({ intl }) {
-  
+  const runtime = useRuntime()
   const [offline, setOffline] = useState(false)
   // Useful to dismissable toast flow.
   const [showingOffline, setShowingOffline] = useState(false)
@@ -14,15 +16,15 @@ function NetworkStatusToast({ intl }) {
       message: intl.formatMessage({
         id: 'store/store.network-status.offline',
       }),
-      dismissable: true,
+      dismissable: pathOr(false, ['hints', 'mobile'], runtime),
       duration: Infinity,
     }),
-    [intl]
+    [intl, runtime]
   )
 
   const updateStatus = useCallback(() => {
     if (navigator) {
-      setOffline(navigator?.onLine || true)
+      setOffline(!pathOr(true, ['onLine'], navigator))
     }
   }, [])
 
@@ -49,7 +51,7 @@ function NetworkStatusToast({ intl }) {
     } else if (
       !offline &&
       toastState.isToastVisible &&
-      toastState?.currentToast?.message === toastConfig.message
+      path(['currentToast', 'message'], toastState) === toastConfig.message
     ) {
       hideToast()
       setShowingOffline(false)
