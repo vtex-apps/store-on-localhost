@@ -1,5 +1,0 @@
-query Brand($id: Int) {
-  brand(id: $id) {
-    imageUrl
-  }
-}

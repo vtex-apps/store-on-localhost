@@ -1,3 +1,0 @@
-mutation setMinicartOpen($isOpen: Boolean!) {
-  setMinicartOpen(isOpen: $isOpen) @client
-}

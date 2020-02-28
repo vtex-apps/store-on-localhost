@@ -1,3 +1,0 @@
-mutation UpdateLocalItems($items: [MinicartItem]) {
-  updateLocalItems(items: $items) @client
-}

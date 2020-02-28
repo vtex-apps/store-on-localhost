@@ -1,7 +1,0 @@
-query {
-  minicart @client {
-    items
-    orderForm
-    isOpen
-  }
-}

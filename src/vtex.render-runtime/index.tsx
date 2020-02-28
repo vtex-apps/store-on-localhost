@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-interface RenderContext {}
+type RenderContext = any
 
 interface RenderContextProps {
   runtime: any

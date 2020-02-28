@@ -1,8 +1,0 @@
-# import '../fragments/orderForm.graphql'
-
-mutation estimateShipping($addressInput: AddressInput) {
-  estimateShipping(address: $addressInput)
-    @context(provider: "vtex.checkout-graphql") {
-    ...OrderFormFragment
-  }
-}

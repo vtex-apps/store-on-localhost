@@ -1,7 +1,0 @@
-mutation updateOrderForm(
-  $orderForm: [OrderForm]
-  $forceUpdateItems: Boolean = false
-) {
-  updateOrderForm(orderForm: $orderForm, forceUpdateItems: $forceUpdateItems)
-    @client
-}

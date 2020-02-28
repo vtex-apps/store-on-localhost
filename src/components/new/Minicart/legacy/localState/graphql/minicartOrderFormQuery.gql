@@ -1,5 +1,0 @@
-query orderFormLocal {
-  minicart @client {
-    orderForm
-  }
-}
