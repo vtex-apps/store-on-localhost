@@ -5,25 +5,24 @@ import PropTypes from 'prop-types'
 import PixelContext from './components/new/PixelContext/PixelContext'
 import ToastProvider from './components/new/Styleguide/ToastProvider'
 import PWAContext from './components/new/StoreResources/PWAContext'
-// import OrderQueue from './components/new/OrderManager/OrderQueue'
-// const { OrderQueueProvider } = OrderQueue
-// import OrderItems from './components/new/OrderItems/OrderItems'
-// const { OrderItemsProvider } = OrderItems
-// import OrderManagerForm from './components/new/OrderManager/OrderForm'
-// const { OrderFormProvider: OrderFormProviderCheckout } = OrderManagerForm
-
+import OrderQueue from './components/new/OrderManager/OrderQueue'
+import OrderItems from './components/new/OrderItems/OrderItems'
+import OrderManagerForm from './components/new/OrderManager/OrderForm'
 import UserDataPixel from './components/UserDataPixel'
 import PageViewPixel from './components/PageViewPixel'
 import OrderFormProvider from './components/OrderFormProvider'
 import NetworkStatusToast from './components/NetworkStatusToast'
-// import WrapperContainer from './components/WrapperContainer'
+import WrapperContainer from './components/WrapperContainer'
 
 import { normalizeNavigation } from './utils/navigation'
 import { useRuntime } from '../vtex.render-runtime'
-import { canUseDOM } from 'exenv'
+// import { canUseDOM } from 'exenv'
 
+const { OrderQueueProvider } = OrderQueue
 const { PixelProvider } = PixelContext
 const { PWAProvider } = PWAContext
+const { OrderFormProvider: OrderFormProviderCheckout } = OrderManagerForm
+const { OrderItemsProvider } = OrderItems
 
 const APP_LOCATOR = 'vtex.store'
 const CONTENT_TYPE = 'text/html; charset=utf-8'
@@ -50,10 +49,10 @@ const StoreWrapper = ({ children }) => {
     prefetchDefaultPages,
     addNavigationRouteModifier,
   } = useRuntime()
-  const isStorefrontIframe =
-    canUseDOM && window.top !== window.self && window.top.__provideRuntime
+  // const isStorefrontIframe =
+  //   canUseDOM && window.top !== window.self && window.top.__provideRuntime
 
-  const supportsServiceWorker = canUseDOM && 'serviceWorker' in navigator
+  // const supportsServiceWorker = canUseDOM && 'serviceWorker' in navigator
 
   useEffect(() => {
     prefetchDefaultPages([
@@ -87,7 +86,7 @@ const StoreWrapper = ({ children }) => {
   const description = (metaTags && metaTags.description) || metaTagDescription
   const title = pageTitle || titleTag
 
-  const [queryMatch] = route.path.match(/\?.*/) || ['?']
+  // const [queryMatch] = route.path.match(/\?.*/) || ['?']
 
   const canonicalLink =
     canonicalHost &&
@@ -133,9 +132,6 @@ const StoreWrapper = ({ children }) => {
             : []),
         ].filter(Boolean)}
       />
-      <div>
-        Hello Commerce !
-      </div>
       <PixelProvider currency={currency}>
         <PWAProvider rootPath={rootPath}>
           <PageViewPixel title={title} />
@@ -143,15 +139,15 @@ const StoreWrapper = ({ children }) => {
           <ToastProvider positioning="window">
             <NetworkStatusToast />
             <OrderFormProvider>
-              {/* <OrderQueueProvider>
+              <OrderQueueProvider>
                 <OrderFormProviderCheckout>
                   <OrderItemsProvider>
                     <WrapperContainer className="vtex-store__template bg-base">
                       {children}
                     </WrapperContainer>
-                  </OrderItemsProvider>
+                  </OrderItemsProvider> 
                 </OrderFormProviderCheckout>
-              </OrderQueueProvider>*/}
+              </OrderQueueProvider>
             </OrderFormProvider>
           </ToastProvider> 
         </PWAProvider>

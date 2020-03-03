@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { canUseDOM } from 'exenv'
 import { useMemo } from 'react'
 

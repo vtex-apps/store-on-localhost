@@ -12,6 +12,7 @@ import { IntlProvider } from 'react-intl'
 import staticRuntime from './runtime.json'
 import { RenderContextProvider } from './vtex.render-runtime'
 import StoreWrapper from './monobloco/StoreWrapper'
+import HomeWrapper from './monobloco/HomeWrapper'
 
 const runtime = {
   ...staticRuntime,
@@ -42,7 +43,9 @@ export const App = () => {
     <ApolloProvider client={client}>
       <IntlProvider messages={runtime.messages} locale="en">
         <RenderContextProvider runtime={runtime}>
-          <StoreWrapper />
+          <StoreWrapper>
+            <HomeWrapper />
+          </StoreWrapper>
         </RenderContextProvider>  
       </IntlProvider>
     </ApolloProvider>

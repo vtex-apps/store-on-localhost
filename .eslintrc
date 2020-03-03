@@ -1,0 +1,6 @@
+{
+  "extends": ["react-app"],
+  "rules": {
+    "max-classes-per-file": 1
+  }
+}

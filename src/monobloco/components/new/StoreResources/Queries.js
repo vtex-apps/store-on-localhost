@@ -1,16 +1,18 @@
-import orderForm from './queries/orderForm.gql'
-import product from './queries/product.gql'
-import productPreviewFragment from './queries/productPreview.gql'
-import recommendationsAndBenefits from './queries/recommendationsAndBenefits.gql'
-import search from './queries/search.gql'
-import productSearch from './queries/productSearch.gql'
-import productSearchV2 from './queries/productSearchV2.gql'
-import session from './queries/session.gql'
-import productBenefits from './queries/productBenefits.gql'
-import address from './queries/address.gql'
-import searchMetadata from './queries/searchMetadata.gql'
-import productCategoryTree from './queries/UNSTABLE__productCategoryTree.gql'
-import facets from './queries/facets.gql'
+import { loader } from 'graphql.macro'
+
+const orderForm = loader('./queries/orderForm.gql')
+const product = loader('./queries/product.gql')
+const productPreviewFragment = loader('./queries/productPreview.gql')
+const recommendationsAndBenefits = loader('./queries/recommendationsAndBenefits.gql')
+const search = loader('./queries/search.gql')
+const productSearch = loader('./queries/productSearch.gql')
+const productSearchV2 = loader('./queries/productSearchV2.gql')
+const session = loader('./queries/session.gql')
+const productBenefits = loader('./queries/productBenefits.gql')
+const address = loader('./queries/address.gql')
+const searchMetadata = loader('./queries/searchMetadata.gql')
+const productCategoryTree = loader('./queries/UNSTABLE__productCategoryTree.gql')
+const facets = loader('./queries/facets.gql')
 
 export default {
   address,

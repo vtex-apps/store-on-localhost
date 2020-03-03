@@ -1,8 +1,10 @@
-import addToCart from './mutations/addToCart.gql'
-import updateItems from './mutations/updateItems.gql'
-import updateOrderFormProfile from './mutations/updateOrderFormProfile.gql'
-import updateOrderFormShipping from './mutations/updateOrderFormShipping.gql'
-import updateOrderFormCheckin from './mutations/updateOrderFormCheckin.gql'
+import { loader } from 'graphql.macro'
+
+const addToCart = loader('./mutations/addToCart.gql')
+const updateItems = loader('./mutations/updateItems.gql')
+const updateOrderFormProfile = loader('./mutations/updateOrderFormProfile.gql')
+const updateOrderFormShipping = loader('./mutations/updateOrderFormShipping.gql')
+const updateOrderFormCheckin = loader('./mutations/updateOrderFormCheckin.gql')
 
 export default {
   addToCart,
