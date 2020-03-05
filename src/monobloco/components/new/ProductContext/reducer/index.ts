@@ -139,7 +139,7 @@ function initReducer({ query, product }: ProductAndQuery) {
   const items = (product && product.items) || []
   return {
     ...defaultState,
-    selectedItem: getSelectedItem(getSelectedSKUFromQueryString(query), items),
+    selectedItem: getSelectedItem(getSelectedSKUFromQueryString(query), items as any),
     product,
   }
 }

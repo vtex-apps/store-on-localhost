@@ -2,11 +2,12 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloClient } from 'apollo-client'
 import { ApolloLink } from 'apollo-link'
 import gql from 'graphql-tag'
+import { loader } from 'graphql.macro'
 
 import createLocalState from '../localState/index'
-import addToCartMutation from '../localState/graphql/addToCartMutation.gql'
-import updateItemsMutation from '../localState/graphql/updateItemsMutation.gql'
 import { ITEMS_STATUS } from '../localState'
+const addToCartMutation = loader('../localState/graphql/addToCartMutation.gql')
+const updateItemsMutation = loader('../localState/graphql/updateItemsMutation.gql')
 
 describe('Local State', () => {
   let cache, client

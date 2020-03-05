@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import ToastManager from './ToastManager'
@@ -9,24 +9,30 @@ const ToastContext = React.createContext({
   toastState: null,
 })
 
-const ToastProvider = ( { props } ) => {
-  const { children, positioning } = props
-  // const toastManager = React.createRef()
+class ToastProvider extends Component {
+  constructor(props) {
+    super(props)
 
-  return (
-    <ToastManager positioning={positioning}>
-      {({ showToast, hideToast, state: toastState }) => (
-        <ToastContext.Provider
-          value={{
-            showToast,
-            hideToast,
-            toastState,
-          }}>
-          {children}
-        </ToastContext.Provider>
-      )}
-    </ToastManager>
-  )
+    this.toastManager = React.createRef()
+  }
+
+  render() {
+    const { children, positioning } = this.props
+    return (
+      <ToastManager positioning={positioning}>
+        {({ showToast, hideToast, state: toastState }) => (
+          <ToastContext.Provider
+            value={{
+              showToast,
+              hideToast,
+              toastState,
+            }}>
+            {children}
+          </ToastContext.Provider>
+        )}
+      </ToastManager>
+    )
+  }
 }
 
 ToastProvider.propTypes = {

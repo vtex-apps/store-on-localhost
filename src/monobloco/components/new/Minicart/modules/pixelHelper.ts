@@ -1,4 +1,4 @@
-export function mapCartItemToPixel(item: CartItem): PixelCartItem {
+export function mapCartItemToPixel(item: CartItem | any): PixelCartItem {
   return {
     skuId: item.id,
     variant: item.skuName,

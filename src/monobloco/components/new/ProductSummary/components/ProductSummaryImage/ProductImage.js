@@ -12,12 +12,12 @@ import applyModifiers from '../../../CssHandles/applyModifiers'
 import ImagePlaceholder from './ImagePlaceholder'
 
 import ProductSummaryContextApp from '../../../ProductSummaryContext/ProductSummaryContext'
-const { useProductSummary } = ProductSummaryContextApp
 
 import productSummary from '../../productSummary.css'
 
 import { changeImageUrlSize } from '../../utils/normalize'
 
+const { useProductSummary } = ProductSummaryContextApp
 const CSS_HANDLES = ['image', 'imageContainer', 'product', 'imagePlaceholder']
 
 const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {

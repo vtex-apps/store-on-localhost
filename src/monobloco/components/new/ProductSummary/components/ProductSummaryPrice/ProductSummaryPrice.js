@@ -5,10 +5,10 @@ import classNames from 'classnames'
 import Spinner from '../../../Styleguide/Spinner'
 import ProductPrice from '../../../StoreComponents/ProductPrice'
 import ProductSummaryContextApp from '../../../ProductSummaryContext/ProductSummaryContext'
-const { useProductSummary } = ProductSummaryContextApp
 
 import useCssHandles from '../../../CssHandles/useCssHandles'
 
+const { useProductSummary } = ProductSummaryContextApp
 const CSS_HANDLES = [
   'priceContainer',
   'productPriceClass',

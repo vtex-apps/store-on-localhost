@@ -1,3 +1,5 @@
+import React from 'react'
+
 import BaseSpecificationBadges from '../../../ProductSpecificationBadges/BaseSpecificationBadges'
 import ProductSummaryContextApp from '../../../ProductSummaryContext/ProductSummaryContext'
 const { useProductSummary } = ProductSummaryContextApp

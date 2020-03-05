@@ -32,7 +32,7 @@ const applyModifiers = (handles: string, modifier: string | string[]) => {
     return handles
   }
 
-  const splitHandles = handles.split(' ')
+  const splitHandles = handles?.split(' ')
 
   const modifiedHandles = normalizedModifiers
     .map(currentModifier => {
@@ -43,16 +43,16 @@ const applyModifiers = (handles: string, modifier: string | string[]) => {
       }
 
       return splitHandles
-        .map(handle => `${handle}--${currentModifier}`)
+        ?.map(handle => `${handle}--${currentModifier}`)
         .join(' ')
         .trim()
     })
-    .filter(l => l.length > 0)
+    .filter(l => l?.length > 0)
     .join(' ')
     .trim()
 
   return splitHandles
-    .concat(modifiedHandles)
+    ?.concat(modifiedHandles)
     .join(' ')
     .trim()
 }

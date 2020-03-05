@@ -70,9 +70,7 @@ const CSS_HANDLES = [
   'closeIconButton',
 ]
 
-const Drawer: StorefrontComponent<
-  any & { customIcon: ReactElement }
-> = ({
+const Drawer: any = ({
   width,
   customIcon,
   maxWidth = 450,

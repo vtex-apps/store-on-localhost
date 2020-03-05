@@ -24,7 +24,7 @@ function useSelectedItemFromId(
     const items = (product && product.items) || []
     dispatch({
       type: 'SET_SELECTED_ITEM',
-      args: { item: getSelectedItem(skuId, items) },
+      args: { item: getSelectedItem(skuId, items as any) },
     })
   }, [dispatch, skuId, product])
 }

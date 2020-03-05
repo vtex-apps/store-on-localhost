@@ -7,15 +7,15 @@ import { Link } from '../../../../../vtex.render-runtime'
 import ProductListContext from '../../ProductListContext/ProductListContext'
 import ProductSummaryContext from './ProductSummaryContext'
 import ProductSummaryContextApp from '../../ProductSummaryContext/ProductSummaryContext'
-const {
-  ProductSummaryProvider,
-  useProductSummaryDispatch,
-  useProductSummary } = ProductSummaryContextApp
 import ProductContextProvider from '../../ProductContext/ProductContextProvider'
 import { productShape } from '../utils/propTypes'
 import { mapCatalogProductToProductSummary } from '../utils/normalize'
 import useCssHandles from '../../CssHandles/useCssHandles'
 
+const {
+  ProductSummaryProvider,
+  useProductSummaryDispatch,
+  useProductSummary } = ProductSummaryContextApp
 const PRODUCT_SUMMARY_MAX_WIDTH = 300
 const CSS_HANDLES = ['container', 'containerNormal', 'element', 'clearLink']
 

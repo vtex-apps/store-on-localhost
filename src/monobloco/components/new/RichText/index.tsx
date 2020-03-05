@@ -207,93 +207,94 @@ const RichText: FunctionComponent<any> = ({
   intl,
   blockClass,
 }) => {
-  const [isMounted, setMounted] = useState(false)
-  const handles = useCssHandles(CSS_HANDLES,{blockClass})
-  const renderer = useRef<Renderer>()
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  return null
+  // const [isMounted, setMounted] = useState(false)
+  // const handles = useCssHandles(CSS_HANDLES,{blockClass})
+  // const renderer = useRef<Renderer>()
+  // useEffect(() => {
+  //   setMounted(true)
+  // }, [])
 
-  if (!isMounted) {
-    renderer.current = new Renderer()
-    renderer.current.paragraph = text =>
-      `<p class="lh-copy ${handles.paragraph}">${text}</p>`
-    renderer.current.strong = text => `<span class="b ${handles.strong}">${text}</span>`
-    renderer.current.em = text => `<span class="i ${handles.italic}">${text}</span>`
-    renderer.current.heading = renderHeading(handles)
-    renderer.current.link = (href: string, title: string, text: string) => {
-      const targetAtr = getTargetFromUrl(href)
-      const targetRemoved = !!targetAtr ? href.replace(/target=_blank/, '').replace(/\?\&/, '?') : href
+  // if (!isMounted) {
+  //   renderer.current = new Renderer()
+  //   renderer.current.paragraph = text =>
+  //     `<p class="lh-copy ${handles.paragraph}">${text}</p>`
+  //   renderer.current.strong = text => `<span class="b ${handles.strong}">${text}</span>`
+  //   renderer.current.em = text => `<span class="i ${handles.italic}">${text}</span>`
+  //   renderer.current.heading = renderHeading(handles)
+  //   renderer.current.link = (href: string, title: string, text: string) => {
+  //     const targetAtr = getTargetFromUrl(href)
+  //     const targetRemoved = !!targetAtr ? href.replace(/target=_blank/, '').replace(/\?\&/, '?') : href
 
-      //clean trailing ? or &
-      const cleanHref = test(/\?|\&/, last(targetRemoved)) ? targetRemoved.slice(0, -1) : targetRemoved
-      const titleAtr = title ? `title="${title}"` : ''
+  //     //clean trailing ? or &
+  //     const cleanHref = test(/\?|\&/, last(targetRemoved)) ? targetRemoved.slice(0, -1) : targetRemoved
+  //     const titleAtr = title ? `title="${title}"` : ''
 
-      let finalLink = `<a class="${handles.link}" href="${cleanHref}"`
-      if (titleAtr) {
-        finalLink += ` ${titleAtr}`
-      }
+  //     let finalLink = `<a class="${handles.link}" href="${cleanHref}"`
+  //     if (titleAtr) {
+  //       finalLink += ` ${titleAtr}`
+  //     }
 
-      if (targetAtr) {
-        finalLink += ` ${targetAtr}`
-      }
+  //     if (targetAtr) {
+  //       finalLink += ` ${targetAtr}`
+  //     }
 
-      finalLink += `>${text}</any>`
-      return finalLink
-    }
-    renderer.current.html = html => escapeHtml(html)
-    renderer.current.table = (header, body) => `
-    <table class="${handles.table}">
-      <thead class="${handles.tableHead}">
-        ${header}
-      </thead>
-      <tbody class="${handles.tableBody}">
-        ${body}
-      </tbody>
-    </table>`
-    renderer.current.image = (href: string, title: string, text: string) =>
-      `<img class="${
-      handles.image
-      }" src="${href}" alt="${text}" ${title ? `title="${title}"` : ''} />`
-    renderer.current.list = (body: string, ordered: boolean) => {
-      const tag = ordered ? 'ol' : 'ul'
-      return `<${tag} class="${handles.list} ${ordered ? handles.listOrdered : ''}">${body}</${tag}>`
-    }
-    renderer.current.listitem = (text: string) => `<li class="${handles.listItem}">${text}</li>`
-  }
+  //     finalLink += `>${text}</any>`
+  //     return finalLink
+  //   }
+  //   renderer.current.html = html => escapeHtml(html)
+  //   renderer.current.table = (header, body) => `
+  //   <table class="${handles.table}">
+  //     <thead class="${handles.tableHead}">
+  //       ${header}
+  //     </thead>
+  //     <tbody class="${handles.tableBody}">
+  //       ${body}
+  //     </tbody>
+  //   </table>`
+  //   renderer.current.image = (href: string, title: string, text: string) =>
+  //     `<img class="${
+  //     handles.image
+  //     }" src="${href}" alt="${text}" ${title ? `title="${title}"` : ''} />`
+  //   renderer.current.list = (body: string, ordered: boolean) => {
+  //     const tag = ordered ? 'ol' : 'ul'
+  //     return `<${tag} class="${handles.list} ${ordered ? handles.listOrdered : ''}">${body}</${tag}>`
+  //   }
+  //   renderer.current.listitem = (text: string) => `<li class="${handles.listItem}">${text}</li>`
+  // }
 
-  const alignToken = safelyGetToken(alignTokens, textAlignment, 'textAlignment')
-  const itemsToken = safelyGetToken(itemsTokens, textPosition, 'textPosition')
-  const justifyToken = safelyGetToken(
-    justifyTokens,
-    textPosition,
-    'textPosition'
-  )
+  // const alignToken = safelyGetToken(alignTokens, textAlignment, 'textAlignment')
+  // const itemsToken = safelyGetToken(itemsTokens, textPosition, 'textPosition')
+  // const justifyToken = safelyGetToken(
+  //   justifyTokens,
+  //   textPosition,
+  //   'textPosition'
+  // )
 
-  const html = useMemo(() => {
-    marked.setOptions({
-      gfm: true,
-      breaks: true,
-      sanitize: false, //Use insane lib for sanitizing
-      smartLists: true,
-      renderer: renderer.current,
-    })
+  // const html = useMemo(() => {
+  //   marked.setOptions({
+  //     gfm: true,
+  //     breaks: true,
+  //     sanitize: false, //Use insane lib for sanitizing
+  //     smartLists: true,
+  //     renderer: renderer.current,
+  //   })
 
-    return insane(
-      //TODO: While markdown component isn't released, it needs to be done this way.
-      marked(formatIOMessage({ id: text, intl })),
-      sanitizerConfig
-    )
-  }, [text, intl, sanitizerConfig, marked, insane, formatIOMessage])
+  //   return insane(
+  //     //TODO: While markdown component isn't released, it needs to be done this way.
+  //     marked(formatIOMessage({ id: text, intl })),
+  //     sanitizerConfig
+  //   )
+  // }, [text, intl, sanitizerConfig, marked, insane, formatIOMessage])
 
-  return (
-    <div
-      id={htmlId}
-      className={`${handles.container} flex ${alignToken} ${itemsToken} ${justifyToken} ${sanitizeFont(font)} ${sanitizeColor(textColor)}`}
-    >
-      <div dangerouslySetInnerHTML={{ __html: html }} />
-    </div>
-  )
+  // return (
+  //   <div
+  //     id={htmlId}
+  //     className={`${handles.container} flex ${alignToken} ${itemsToken} ${justifyToken} ${sanitizeFont(font)} ${sanitizeColor(textColor)}`}
+  //   >
+  //     <div dangerouslySetInnerHTML={{ __html: html }} />
+  //   </div>
+  // )
 }
 
 RichText.defaultProps = {

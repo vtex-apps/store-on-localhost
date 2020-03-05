@@ -3,7 +3,7 @@ import { Link, useRuntime } from '../../../../../../vtex.render-runtime'
 import useCssHandles from '../../../CssHandles/useCssHandles'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import * as Amp from 'react-amphtml'
+// import * as Amp from 'react-amphtml'
 
 import Placeholder from './Placeholder'
 
@@ -24,7 +24,7 @@ const Logo = ({
   mobileHeight,
 }) => {
   const {
-    amp,
+    // amp,
     account,
     hints: { mobile },
   } = useRuntime()
@@ -41,18 +41,18 @@ const Logo = ({
 
   let image = null
 
-  if (amp && url) {
-    image = (
-      <Amp.AmpImg
-        specName="default"
-        width={imgWidth}
-        height={imgHeight}
-        alt={title}
-        src={imageUrl}
-        className={handles.logoImage}
-      />
-    )
-  } else if (url) {
+  // if (amp && url) {
+    // image = (
+    //   <Amp.AmpImg
+    //     specName="default"
+    //     width={imgWidth}
+    //     height={imgHeight}
+    //     alt={title}
+    //     src={imageUrl}
+    //     className={handles.logoImage}
+    //   />
+    // )
+  // } else if (url) {
     image = (
       <img
         src={imageUrl}
@@ -62,7 +62,7 @@ const Logo = ({
         className={handles.logoImage}
       />
     )
-  }
+  // }
 
   const logo = (
     <span className={`${logoClassNames} pv4 ph6`}>
