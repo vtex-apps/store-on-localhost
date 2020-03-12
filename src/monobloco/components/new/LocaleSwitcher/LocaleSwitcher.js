@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect, useMemo } from 'react'
-import { graphql } from 'react-apollo'
-import { useRuntime } from '../../../../vtex.render-runtime'
-import IconGlobe from '../StoreIcons/IconGlobe'
-import useCssHandles from '../CssHandles/useCssHandles'
-import { path } from 'ramda'
 import { loader } from 'graphql.macro'
+import { path } from 'ramda'
+import React, { useEffect, useMemo, useState } from 'react'
+import { useQuery } from 'react-apollo'
+
+import { useRuntime } from '../../../../vtex.render-runtime'
+import useCssHandles from '../CssHandles/useCssHandles'
+import IconGlobe from '../StoreIcons/IconGlobe'
 
 const Locales = loader('./queries/locales.gql')
 
@@ -41,7 +42,8 @@ const getLocale = (supportedLangs, locale) => {
   return localeObj || (supportedLangs && supportedLangs[0])
 }
 
-const LocaleSwitcher = ({ data }) => {
+const LocaleSwitcher = () => {
+  const data = useQuery(Locales)
   const supportedLangs = useMemo(() => getSupportedLanguages(data), [data])
   const { culture, emitter } = useRuntime()
   const [openLocaleSelector, setOpenLocaleSelector] = useState(false)
@@ -107,4 +109,4 @@ const LocaleSwitcher = ({ data }) => {
   )
 }
 
-export default graphql(Locales)(LocaleSwitcher)
+export default LocaleSwitcher

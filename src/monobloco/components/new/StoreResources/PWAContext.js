@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { loader } from 'graphql.macro'
 import React, {
   useCallback,
   useContext,
@@ -7,17 +8,18 @@ import React, {
   useRef,
   useState,
 } from 'react'
+import { useQuery } from 'react-apollo'
 import { Helmet } from 'react-helmet'
-import { graphql } from 'react-apollo'
-import {usePixel} from '../PixelContext/PixelContext'
-import { loader } from 'graphql.macro'
+
+import { usePixel } from '../PixelContext/PixelContext'
 
 const pwaData = loader('./queries/pwaData.gql')
 
 const PWAContext = React.createContext(null)
 
-const PWAProvider = ({ rootPath, children, data = {} }) => {
-  const { manifest, iOSIcons, splashes, pwaSettings, loading, error } = data
+const PWAProvider = ({ rootPath, children }) => {
+  const { data, loading, error } = useQuery(pwaData, { ssr: false })
+  const { manifest, iOSIcons, splashes, pwaSettings } = data || {}
   const { push } = usePixel()
 
   const deferredPrompt = useRef(null)
@@ -137,10 +139,4 @@ const usePWA = () => {
   return useContext(PWAContext)
 }
 
-const options = {
-  options: () => ({
-    ssr: false,
-  }),
-}
-
-export default { PWAContext, PWAProvider: graphql(pwaData, options)(PWAProvider), usePWA }
+export default { PWAContext, PWAProvider, usePWA }

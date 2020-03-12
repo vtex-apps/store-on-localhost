@@ -61,10 +61,8 @@ const MenuItem: StorefrontFunctionComponent<MenuItemSchema> = ({
    * in the future. */
   const submenuImplementation = useSubmenuImplementation()
   const isCollapsible = submenuImplementation === 'submenu.accordion'
-  console.log('teste CHILDREN: ', children)
-
+  
   if (isCollapsible) {
-    console.log('teste isCollapsible: ')
     return (
       <li className={classNames(handles.menuItem, 'list')}>
         <div className={handles.menuItemInnerDiv}

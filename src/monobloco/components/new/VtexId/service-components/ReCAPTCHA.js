@@ -14,7 +14,6 @@ export default class ReCAPTCHA extends Component {
   }
 
   verifyRecaptcha = () => {
-    console.log('verifying recaptcha...')
     this.state.recaptchaRef.current.execute()
   }
 

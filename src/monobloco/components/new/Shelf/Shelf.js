@@ -33,7 +33,6 @@ const Shelf = props => {
     paginationDotsVisibility = 'visible',
     productList = ProductList.defaultProps,
   } = props
-  console.log('teste shelf: ', props)
   const handles = useCssHandles(CSS_HANDLES)
   const { isMobile } = useDevice()
   const { loading, error, products } = data || {}

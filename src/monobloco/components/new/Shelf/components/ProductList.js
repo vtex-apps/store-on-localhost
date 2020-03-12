@@ -54,7 +54,7 @@ const ProductList = ({
         {width => (
           <ShelfContent
             gap={gap}
-            width={width}
+            width={width.width}
             arrows={arrows}
             scroll={scroll}
             summary={summary}

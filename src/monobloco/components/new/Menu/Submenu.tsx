@@ -44,7 +44,6 @@ const Submenu: StorefrontFunctionComponent<SubmenuProps> = ({
   paddingTop = 4,
   paddingBottom = 4,
 }) => {
-  console.log('teste SHOWING SUBMENU')
   const handles = useCssHandles(CSS_HANDLES)
 
   return (

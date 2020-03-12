@@ -122,7 +122,6 @@ class AvailabilitySubscriber extends Component {
           })
         },
         mutationErr => {
-          console.log('ERROR: ', mutationErr)
           this.setState({
             isLoading: false,
             sendStatus: 'error',
